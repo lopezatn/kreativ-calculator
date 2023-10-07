@@ -8,26 +8,18 @@
 </head>
 <body>
 
-    <div class="calc-container">
-        <div id="display"></div>
-        <table>
-            <tr>
-                <td><button onclick="populateDisplay(7)">7</button></td><td><button onclick="populateDisplay(8)">8</button></td><td><button onclick="populateDisplay(9)">9</button></td>
-            </tr>
-            <tr>
-                <td><button onclick="populateDisplay(4)">4</button></td><td><button onclick="populateDisplay(5)">5</button></td><td><button onclick="populateDisplay(6)">6</button></td>
-            </tr>
-            <tr>
-                <td><button onclick="populateDisplay(1)">1</button></td><td><button onclick="populateDisplay(2)">2</button></td><td><button onclick="populateDisplay(3)">3</button></td>
-            </tr>
-            <tr>
-                <td><button onclick="onOperatorClick(`+`)">+</button></td><td><button onclick="onOperatorClick(`-`)">-</button></td><td><button onclick="onOperatorClick(`*`)">*</button></td>
-            </tr>
-            <tr>
-                <td><button onclick="onOperatorClick(`/`)">/</button></td><td><button onclick="clearDisplay()">CE</button></td><td><button onclick="onEqualClick()">=</button></td>
-            </tr>
-        </table>
-    </div>
+    <main class="calculator">
+       <section class="calc-container">
+        
+            <div id="display" class="calc-display"></div>
+            <button class="span-2" onclick="">DELETE</button><button onclick="clearDisplayButton()">AC</button><button onclick="onOperatorClick(`/`)">/</button>
+            <button onclick="onNumberClick(7)">7</button><button onclick="onNumberClick(8)">8</button><button onclick="onNumberClick(9)">9</button><button onclick="onOperatorClick(`*`)">*</button>
+            <button onclick="onNumberClick(4)">4</button><button onclick="onNumberClick(5)">5</button><button onclick="onNumberClick(6)">6</button><button onclick="onOperatorClick(`-`)">-</button>
+            <button onclick="onNumberClick(1)">1</button><button onclick="onNumberClick(2)">2</button><button onclick="onNumberClick(3)">3</button><button onclick="onOperatorClick(`+`)">+</button>
+            <button class="span-2" onclick="onNumberClick(0)">0</button><button onclick="onNumberClick(`.`)">.</button><button onclick="onEqualClick()">=</button>
+        
+        </section>
+    </main>
 
     <script src="script.js"></script>
 </body>

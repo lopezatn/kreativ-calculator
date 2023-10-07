@@ -1,5 +1,7 @@
-let firstDisplayValue;
+let firstValue;
+let secondDisplayValue;
 let operatorValue;
+let result;
 
 function add(num1, num2) {
     const result = num1 + num2; 
@@ -36,28 +38,58 @@ function operate(operator, number1, number2) {
             return divide(number1, number2);
     
         default:
-            alert("Not an operator");
+            alert("Whoops, something happened.");
             break;
     }
 }
 
-function populateDisplay(numbers) {
-    document.getElementById("display").textContent += numbers;
+function populateDisplay(number) {
+    document.getElementById("display").textContent += number;
+} 
+
+function onNumberClick(number) {
+    if (result != undefined) {
+        firstValue = result;
+        result = undefined;
+        clearDisplay();
+    }
+    populateDisplay(number);
+
 }
 
 function onOperatorClick(operator) {
-    firstDisplayValue = document.getElementById("display").textContent;
+    if (operatorValue === undefined) {
+        firstValue = document.getElementById("display").textContent;
+        clearDisplay();
+    } else {
+        onEqualClick();
+    }
     operatorValue = operator;
-    clearDisplay();
 }
 
 function clearDisplay() {
     document.getElementById("display").textContent = "";
 }
 
+function clearDisplayButton() {
+    document.getElementById("display").textContent = "";
+    firstValue = undefined;
+    secondDisplayValue = undefined;
+    operatorValue = undefined;
+    result = undefined;
+}
+
+// function deleteLastDigit {
+    
+// }
+
 function onEqualClick() {
-    const secondDisplayValue = document.getElementById("display").textContent;
-    const result = operate(operatorValue, parseInt(firstDisplayValue), parseInt(secondDisplayValue));
+    secondDisplayValue = document.getElementById("display").textContent;
+    if (operatorValue === "/" && secondDisplayValue === 0) {
+        alert("Dividing by zero is not possible!");
+    } else {
+    result = Math.ceil(operate(operatorValue, parseInt(firstValue), parseInt(secondDisplayValue)) * 10000) / 10000;
     clearDisplay();
     populateDisplay(result);
+    }
 }
